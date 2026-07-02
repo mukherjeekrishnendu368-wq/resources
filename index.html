@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ISI &amp; CMI Entrance Resources</title>
+<meta name="description" content="A curated collection of problem sets, past papers, handouts, and mock tests for ISI B.Stat/B.Math and CMI entrance preparation.">
+<style>
+  :root{
+    --tealmain:#2c5f47; --tealsoft:#e7e1cd; --tealdark:#193c2d;
+    --accent:#96602a; --paper:#fbfaf5; --ink:#22322b; --muted:#5c6b62;
+    --line:#dce3dd; --card:#ffffff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:Georgia,"Times New Roman",serif;
+    background:var(--paper); color:var(--ink); line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+
+  /* Header / hero */
+  header.hero{
+    background:linear-gradient(160deg,var(--tealdark),var(--tealmain));
+    color:#f5f3e9; padding:64px 24px 52px; position:relative; overflow:hidden;
+  }
+  header.hero::after{
+    content:""; position:absolute; inset:0;
+    background-image:radial-gradient(circle at 1px 1px, rgba(255,255,255,.06) 1px, transparent 0);
+    background-size:22px 22px; pointer-events:none;
+  }
+  .hero-inner{max-width:1080px; margin:0 auto; position:relative; z-index:1}
+  .eyebrow{
+    font-size:.78rem; letter-spacing:.22em; text-transform:uppercase;
+    color:var(--tealsoft); font-family:system-ui,sans-serif; margin-bottom:16px;
+  }
+  .hero h1{font-size:clamp(2rem,5vw,3.1rem); line-height:1.1; margin-bottom:16px; font-weight:700}
+  .hero p.lede{font-size:1.1rem; max-width:620px; color:#e9e6d7}
+  .stats{display:flex; gap:36px; margin-top:34px; flex-wrap:wrap}
+  .stat b{display:block; font-size:1.9rem; color:#fff; font-family:system-ui,sans-serif; font-weight:700}
+  .stat span{font-size:.82rem; letter-spacing:.06em; text-transform:uppercase; color:var(--tealsoft); font-family:system-ui,sans-serif}
+
+  /* Sticky nav */
+  nav.subnav{
+    position:sticky; top:0; z-index:50; background:rgba(251,250,245,.92);
+    backdrop-filter:blur(8px); border-bottom:1px solid var(--line);
+  }
+  .subnav-inner{
+    max-width:1080px; margin:0 auto; padding:12px 24px;
+    display:flex; gap:6px; overflow-x:auto; font-family:system-ui,sans-serif;
+  }
+  .subnav-inner::-webkit-scrollbar{height:0}
+  .navlink{
+    white-space:nowrap; font-size:.86rem; padding:7px 14px; border-radius:100px;
+    color:var(--muted); border:1px solid transparent; transition:.18s;
+  }
+  .navlink:hover{color:var(--tealmain); background:var(--tealsoft); border-color:var(--line)}
+
+  main{max-width:1080px; margin:0 auto; padding:8px 24px 80px}
+
+  .section{padding-top:52px; scroll-margin-top:70px}
+  .section-head{display:flex; gap:16px; align-items:center; margin-bottom:22px}
+  .section-ico{
+    flex:none; width:46px; height:46px; border-radius:12px;
+    background:var(--tealsoft); color:var(--tealdark);
+    display:grid; place-items:center;
+  }
+  .section-ico svg{width:24px; height:24px}
+  .section-titles h2{font-size:1.5rem; color:var(--tealdark); line-height:1.2}
+  .section-titles p{font-size:.92rem; color:var(--muted); font-family:system-ui,sans-serif; margin-top:2px}
+  .count{
+    display:inline-block; background:var(--tealmain); color:#fff; font-size:.7rem;
+    padding:2px 9px; border-radius:100px; margin-left:6px; vertical-align:middle;
+    letter-spacing:.03em;
+  }
+
+  .grid{
+    display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:12px;
+  }
+  .card{
+    display:flex; align-items:center; gap:12px; padding:14px 16px;
+    background:var(--card); border:1px solid var(--line); border-left:3px solid var(--tealmain);
+    border-radius:8px; transition:.18s; font-family:system-ui,sans-serif;
+  }
+  .card:hover{
+    border-color:var(--tealmain); border-left-color:var(--accent);
+    box-shadow:0 6px 18px -8px rgba(44,95,71,.35); transform:translateY(-2px);
+  }
+  .card-ico{flex:none; color:var(--tealmain)}
+  .card-ico svg{width:22px; height:22px; display:block}
+  .card-title{flex:1; font-size:.9rem; line-height:1.35; color:var(--ink)}
+  .card-arrow{flex:none; color:var(--muted); font-size:1rem; transition:.18s}
+  .card:hover .card-arrow{color:var(--accent); transform:translate(2px,-2px)}
+
+  /* About section */
+  .about-body{display:grid; grid-template-columns:1.4fr 1fr; gap:28px; align-items:start}
+  .about-prose p{font-family:system-ui,sans-serif; font-size:.96rem; line-height:1.7; color:var(--ink); margin-bottom:14px}
+  .about-prose p:last-child{margin-bottom:0}
+  .about-email{
+    font-family:system-ui,sans-serif; font-size:.88rem; margin-top:4px;
+    display:inline-flex; align-items:center; gap:7px; color:var(--tealmain);
+  }
+  .about-email:hover{color:var(--accent)}
+  .about-email svg{width:15px; height:15px}
+  .personal-note{
+    margin-top:8px; padding-top:14px; border-top:1px solid var(--line);
+    font-size:.9rem !important; color:var(--muted) !important; font-style:italic;
+  }
+  .edu-card{
+    background:var(--card); border:1px solid var(--line); border-left:3px solid var(--tealmain);
+    border-radius:9px; padding:20px 22px;
+  }
+  .edu-card h3{
+    font-family:system-ui,sans-serif; font-size:.74rem; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--tealmain); margin-bottom:14px;
+  }
+  .edu-item{padding:11px 0; border-top:1px solid var(--line)}
+  .edu-item:first-of-type{border-top:none; padding-top:0}
+  .edu-item .yr{
+    font-family:system-ui,sans-serif; font-size:.74rem; color:var(--accent);
+    font-weight:600; letter-spacing:.03em;
+  }
+  .edu-item .deg{font-family:Georgia,serif; font-size:.98rem; color:var(--tealdark); line-height:1.3; margin:2px 0}
+  .edu-item .inst{font-family:system-ui,sans-serif; font-size:.85rem; color:var(--muted)}
+  @media(max-width:720px){ .about-body{grid-template-columns:1fr} }
+
+  /* Research section */
+  .research-list{display:flex; flex-direction:column; gap:16px}
+  .rcard{
+    padding:22px 24px; background:var(--card);
+    border:1px solid var(--line); border-left:3px solid var(--accent);
+    border-radius:9px; font-family:system-ui,sans-serif;
+  }
+  .rcard .tag{
+    font-size:.68rem; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--accent); font-weight:600; margin-bottom:9px; display:block;
+  }
+  .rcard h3{font-family:Georgia,serif; font-size:1.16rem; line-height:1.3; color:var(--tealdark); margin-bottom:6px}
+  .rcard .rmeta{font-size:.8rem; color:var(--tealmain); margin-bottom:12px; font-style:italic}
+  .rcard p{font-size:.92rem; line-height:1.6; color:var(--muted)}
+
+  footer{
+    border-top:1px solid var(--line); background:var(--tealsoft);
+    padding:34px 24px; text-align:center; font-family:system-ui,sans-serif;
+    font-size:.85rem; color:var(--muted);
+  }
+  footer .note{max-width:620px; margin:0 auto 10px; line-height:1.6}
+
+  @media(max-width:600px){
+    header.hero{padding:44px 20px 40px}
+    .stats{gap:24px}
+    main{padding:8px 16px 60px}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Krishnendu Mukherjee · ISI Kolkata</div>
+    <h1>ISI &amp; CMI Entrance Resources</h1>
+    <p class="lede">A curated library of past papers, topic handouts, quick-revision summaries, problem collections, and mock tests for the Indian Statistical Institute and Chennai Mathematical Institute entrance examinations.</p>
+    <div class="stats">
+      <div class="stat"><b>91</b><span>Documents</span></div>
+      <div class="stat"><b>7</b><span>Categories</span></div>
+      <div class="stat"><b>12</b><span>Years of PYQ</span></div>
+    </div>
+  </div>
+</header>
+
+<nav class="subnav">
+  <div class="subnav-inner"><a href="#about" class="navlink">About</a><a href="#research" class="navlink">Research</a><a href="#isi-previous-year-papers" class="navlink">ISI Previous Year Papers</a><a href="#handouts-and-slides" class="navlink">Handouts &amp; Slides</a><a href="#handwritten-notes" class="navlink">Handwritten Notes</a><a href="#quick-revision-summaries" class="navlink">Quick Revision Summaries</a><a href="#problem-collections" class="navlink">Problem Collections</a><a href="#mock-tests" class="navlink">Mock Tests</a><a href="#toppers-mock-tests" class="navlink">Toppers&#x27; Mock Tests</a></div>
+</nav>
+
+<main>
+
+    <section id="about" class="section">
+      <div class="section-head">
+        <div class="section-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>
+        <div class="section-titles">
+          <h2>About</h2>
+          <p>Krishnendu Mukherjee · Statistician &amp; competition mathematics educator</p>
+          <a class="about-email" href="mailto:mukherjeekrishnendu368@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>mukherjeekrishnendu368@gmail.com</a>
+        </div>
+      </div>
+      <div class="about-body">
+        <div class="about-prose">
+          <p>I am a Senior Research Fellow in Statistics at the Indian Statistical Institute, Kolkata, with research interests spanning combinatorics, game theory, optimisation, number theory, and geometry. My work brings together the theory of stochastic games and modern high-dimensional statistics.</p>
+          <p>Alongside my research, teaching is central to how I work. I have served as a teaching assistant for a range of courses at the Indian Statistical Institute, including Design of Experiments, Probability Theory, and the Statistical Methods sequence, and I have mentored many students preparing for the ISI, CMI, and olympiad examinations. I find genuine satisfaction in guiding students from a first encounter with a problem to a complete and rigorous solution, and much of the material collected on this site grew directly out of that teaching. My aim throughout is to make advanced mathematics approachable without diluting its rigour, and to help students develop the habits of careful reasoning that competition mathematics rewards.</p>
+          <p class="personal-note">Away from mathematics, I write in Bengali; my short-story collection <em>Giraffe-er Dorakata Muffler</em> was published by Sristisukh Prakashan in 2019.</p>
+        </div>
+        <div class="edu-card">
+          <h3>Education</h3>
+          <div class="edu-item">
+            <span class="yr">2022 – Present</span>
+            <div class="deg">Senior Research Fellow in Statistics</div>
+            <div class="inst">Indian Statistical Institute, Kolkata</div>
+          </div>
+          <div class="edu-item">
+            <span class="yr">2020 – 2022</span>
+            <div class="deg">Junior Research Fellow in Statistics</div>
+            <div class="inst">Indian Statistical Institute, Kolkata</div>
+          </div>
+          <div class="edu-item">
+            <span class="yr">2018 – 2020</span>
+            <div class="deg">M.Sc. in Applied Statistics and Informatics</div>
+            <div class="inst">Indian Institute of Technology, Bombay</div>
+          </div>
+          <div class="edu-item">
+            <span class="yr">2015 – 2018</span>
+            <div class="deg">B.Sc. (Hons.) in Mathematics and Physics</div>
+            <div class="inst">Chennai Mathematical Institute</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="research" class="section">
+      <div class="section-head">
+        <div class="section-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg></div>
+        <div class="section-titles">
+          <h2>Research</h2>
+          <p>Ongoing work in stochastic games, game theory, and high-dimensional statistics</p>
+        </div>
+      </div>
+      <div class="research-list">
+
+        <div class="rcard">
+          <span class="tag">Stochastic Games · Optimal Control</span>
+          <h3>On a Switching Control Stochastic Game in Continuous Action Space</h3>
+          <p>A two-player zero-sum switching control stochastic game with two states and a continuous action space, framed through the metaphor of two competing political parties whose actions encode impartiality and cooperation. The ruling party controls the state transition at each stage. The work investigates the existence of non-stationary optimal strategies — Markov, semi-Markov, and order-two Markov types — under both discounted and limiting-average payoff criteria, and asks whether non-stationary strategies can outperform stationary ones.</p>
+        </div>
+
+        <div class="rcard">
+          <span class="tag">Game Theory · Stochastic Processes</span>
+          <h3>The Mathematical Model and Skill Measure for Probo</h3>
+          <p>A formal stochastic-dynamic-game model for prediction-market play built on a background random process, illustrated throughout with a cricket match. The framework features a dynamic set of players who join and leave over time, an order book with first-in-first-out matching, and payoff functions tied to correctly forecasting the outcome. By deriving the structure of the optimal strategy, the work argues that effective play demands genuine skill — anticipating the underlying process and the behaviour of other players — rather than chance.</p>
+        </div>
+
+        <div class="rcard">
+          <span class="tag">High-Dimensional Statistics · Random Matrix Theory</span>
+          <h3>Determining the Latent Dimension of Dynamic Network Factor Models</h3>
+          <p class="rmeta">with Souvik Roy</p>
+          <p>A principled methodology for estimating the number of latent factors in networks that evolve over time. The approach combines dynamic matrix factor modelling with spectral methods from random matrix theory, using the lag-one covariance operator to suppress idiosyncratic noise and isolate the signal subspace. Drawing on the Marchenko–Pastur law, the spiked covariance model, and the BBP phase transition, the paper develops consistent rank estimators, establishes their theoretical guarantees, and illustrates the methodology on dynamic financial correlation networks.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="isi-previous-year-papers" class="section">
+      <div class="section-head">
+        <div class="section-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></div>
+        <div class="section-titles">
+          <h2>ISI Previous Year Papers</h2>
+          <p>Past B.Stat/B.Math entrance papers with full solutions <span class="count">12 files</span></p>
+        </div>
+      </div>
+      <div class="grid">
+        <a class="card" href="pdfs/isi-previous-year-papers__isi2014.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">isi2014</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/isi-previous-year-papers__isi2015.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">isi2015</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/isi-previous-year-papers__isi2016.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">isi2016</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/isi-previous-year-papers__isi2017.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">isi2017</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/isi-previous-year-papers__isi2018.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">isi2018</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/isi-previous-year-papers__isi2019.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">isi2019</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/isi-previous-year-papers__isi2020.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">isi2020</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/isi-previous-year-papers__isi2021.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">isi2021</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/isi-previous-year-papers__isi2022.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">isi2022</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/isi-previous-year-papers__isi2023.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">isi2023</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/isi-previous-year-papers__isi2024.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">isi2024</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/isi-previous-year-papers__isi2025.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">isi2025</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+    <section id="handouts-and-slides" class="section">
+      <div class="section-head">
+        <div class="section-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H4z"/><path d="M2 20h20"/><path d="M8 9h8"/><path d="M8 12h5"/></svg></div>
+        <div class="section-titles">
+          <h2>Handouts &amp; Slides</h2>
+          <p>Topic-wise theory notes and lecture slides <span class="count">21 files</span></p>
+        </div>
+      </div>
+      <div class="grid">
+        <a class="card" href="pdfs/handouts-slides__aod-slides.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">AOD (slides)</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/handouts-slides__calculus.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">Calculus</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/handouts-slides__combi.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">combi</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/handouts-slides__complex-integration.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">Complex Integration</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/handouts-slides__functional-analysis-friendly.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">functional analysis friendly</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/handouts-slides__functional-equations.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">Functional Equations</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/handouts-slides__geometric-functional-equations.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">Geometric Functional Equations</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/handouts-slides__geometry-products.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">geometry products</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/handouts-slides__infinite-exponential.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">infinite Exponential</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/handouts-slides__integral-inequalities.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">Integral Inequalities</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/handouts-slides__l-hopital-extended.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">L-Hopital Extended</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/handouts-slides__limit-theorems.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">limit theorems</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/handouts-slides__lucas-theorem-and-kummer-theorem.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">Lucas Theorem and Kummer Theorem</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/handouts-slides__orthogonal-projection.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">Orthogonal Projection</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/handouts-slides__parity-invariance.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">Parity Invariance</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/handouts-slides__polynomials.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">Polynomials</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/handouts-slides__rigor-1.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">rigor-1</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/handouts-slides__two-lemmas.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">two lemmas</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/handouts-slides__ugb-trigonometry.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">UGB Trigonometry</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/handouts-slides__value-theorems.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">Value Theorems</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/handouts-slides__youngs-inequality.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">youngs inequality</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+    <section id="handwritten-notes" class="section">
+      <div class="section-head">
+        <div class="section-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 5h5v5"/></svg></div>
+        <div class="section-titles">
+          <h2>Handwritten Notes</h2>
+          <p>Scanned worked notes on selected topics <span class="count">9 files</span></p>
+        </div>
+      </div>
+      <div class="grid">
+        <a class="card" href="pdfs/handwritten-notes__complex-no-q-matrix.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">Complex No+Q Matrix</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/handwritten-notes__eigenvalues-and-quadratic-form.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">Eigenvalues and Quadratic Form</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/handwritten-notes__geometric-constructions.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">Geometric Constructions</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/handwritten-notes__inner-and-outer-napoleon-traiangle.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">Inner And Outer Napoleon Traiangle</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/handwritten-notes__matrices-properties.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">Matrices-Properties</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/handwritten-notes__mock-discussion.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">Mock Discussion</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/handwritten-notes__parabola-three-properties.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">Parabola(Three Properties)</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/handwritten-notes__pyq-calculus-1.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">PYQ Calculus-1</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/handwritten-notes__uga-tricks.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">UGA Tricks</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+    <section id="quick-revision-summaries" class="section">
+      <div class="section-head">
+        <div class="section-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M8 4v16"/><path d="M4 9h4"/><path d="M4 14h4"/></svg></div>
+        <div class="section-titles">
+          <h2>Quick Revision Summaries</h2>
+          <p>Condensed formula and concept sheets <span class="count">8 files</span></p>
+        </div>
+      </div>
+      <div class="grid">
+        <a class="card" href="pdfs/quick-revision-summaries__applications-of-derivatives.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">Applications of Derivatives</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/quick-revision-summaries__complex-numbers-and-trigonometry.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">Complex Numbers and Trigonometry</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/quick-revision-summaries__coordinate-geometry.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">Coordinate Geometry</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/quick-revision-summaries__integration.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">Integration</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/quick-revision-summaries__limits-continuity-differentiability.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">Limits Continuity Differentiability</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/quick-revision-summaries__miscellaneous-calculus.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">Miscellaneous Calculus</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/quick-revision-summaries__number-theory-summary.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">Number Theory Summary</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/quick-revision-summaries__value-theorems.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">Value Theorems</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+    <section id="problem-collections" class="section">
+      <div class="section-head">
+        <div class="section-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <div class="section-titles">
+          <h2>Problem Collections</h2>
+          <p>Curated problem sets by topic <span class="count">14 files</span></p>
+        </div>
+      </div>
+      <div class="grid">
+        <a class="card" href="pdfs/problem-collections__texts-and-readings-in-mathematics-u211656-bamdad-r-yahaghi-auth-iranian-mathematics-competitions-1973-u20132007-2010-hindustan-book-agency-10-1007-978-93-86279-48-4-libgen-li.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">[Texts and Readings in Mathematics #U211656] Bamdad R. Yahaghi (auth.) - Iranian Mathematics Competitions 1973#U20132007 (2010, Hindustan Book Agency) [10.1007 978-93-86279-48-4] - libgen.li</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/problem-collections__combinatorics-problem-set-1.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">combinatorics-problem-set-1</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/problem-collections__combinatorics-problem-set-2.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">combinatorics-problem-set-2</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/problem-collections__combinatorics-problem-set-3.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">combinatorics-problem-set-3</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/problem-collections__complex-number-problems.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">complex number problems</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/problem-collections__definite-integral.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">Definite Integral</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/problem-collections__hw-primes.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">HW primes</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/problem-collections__iranian2.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">iranian2</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/problem-collections__plane-geometry-problems.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">Plane Geometry (problems)</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/problem-collections__polynomials-problemset.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">Polynomials ProblemSet</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/problem-collections__putnam-1965-1984.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">putnam (1965-1984)</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/problem-collections__putnam-calculus.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">Putnam Calculus</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/problem-collections__the-william-lowell-putnam-mathematical-c.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">The William Lowell Putnam Mathematical C</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/problem-collections__tomato-sub-1.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">tomato sub-1</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+    <section id="mock-tests" class="section">
+      <div class="section-head">
+        <div class="section-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><path d="M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2"/><path d="M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2"/></svg></div>
+        <div class="section-titles">
+          <h2>Mock Tests</h2>
+          <p>Full-length practice papers with solutions <span class="count">17 files</span></p>
+        </div>
+      </div>
+      <div class="grid">
+        <a class="card" href="pdfs/mock-tests__cmi-mock-2-qp-parta-b.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">CMI Mock-2 QP(PartA+B)</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/mock-tests__cmi-part-a-mock-solution.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">CMI Part A mock solution</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/mock-tests__cmi-part-a-qp.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">CMI part A-QP</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/mock-tests__cmi-part-b-qp.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">CMI part B (qp)</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/mock-tests__cmi-part-b-solution.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">CMI part B(solution)</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/mock-tests__uga-1-mock-vedantu.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">UGA 1 mock Vedantu</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/mock-tests__uga-1-mock-vedantu-solution.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">UGA 1 mock Vedantu solution</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/mock-tests__uga-mock-2-vedantu.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">UGA Mock 2 Vedantu</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/mock-tests__uga-mock-3-and-solutions-final.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">UGA mock 3 and solutions (final)</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/mock-tests__ugb-2-mock-vedantu-soln.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">UGB 2 Mock Vedantu Soln</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/mock-tests__ugb-3-mock-vedantu-soln.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">UGB 3 Mock Vedantu Soln</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/mock-tests__ugb-mock-1-vedantu.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">UGB mock 1 Vedantu</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/mock-tests__ugb-mock-1-vedantu-soln.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">UGB Mock 1 Vedantu Soln</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/mock-tests__ugb-mock-2-vedantu.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">UGB mock 2 Vedantu</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/mock-tests__ugb-mock-3-vedantu.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">UGB mock 3 Vedantu</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/mock-tests__ugb-test-10-part-a-solutions.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">UGB Test 10 (part A)solutions</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/mock-tests__ugb-test-10-solution-part-b.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">UGB Test 10 Solution(Part B)</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+    <section id="toppers-mock-tests" class="section">
+      <div class="section-head">
+        <div class="section-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6 4.3 2.3 7.3L12 16.6 5.7 21l2.3-7.3-6-4.3h7.6z"/></svg></div>
+        <div class="section-titles">
+          <h2>Toppers&#x27; Mock Tests</h2>
+          <p>Higher-difficulty papers for top scorers <span class="count">10 files</span></p>
+        </div>
+      </div>
+      <div class="grid">
+        <a class="card" href="pdfs/toppers-mock-tests__cmi-toppers-mock-solutions.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">CMI Toppers mock solutions</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/toppers-mock-tests__toppers-cmi-mock-parta-b.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">Toppers CMI mock (partA+B)</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/toppers-mock-tests__toppers-mock-ugb-3-solutions.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">Toppers mock UGB-3 Solutions</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/toppers-mock-tests__uga-1-topper.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">UGA 1 Topper</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/toppers-mock-tests__uga-topper-mock1-soln.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">UGA Topper Mock1 Soln</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/toppers-mock-tests__ugb-mock-toppers.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">UGB Mock Toppers</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/toppers-mock-tests__ugb-toppers-mock-1-solutions.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">ugb toppers mock 1 solutions</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/toppers-mock-tests__ugb-toppers-mock-2-revised.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">UGB Toppers Mock 2 (revised)</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/toppers-mock-tests__ugb-toppers-mock-2-solution.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">UGB Toppers Mock 2 (solution)</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="card" href="pdfs/toppers-mock-tests__ugb-toppers-test-3.pdf" target="_blank" rel="noopener">
+          <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M14 2v5h5"/></svg></span>
+          <span class="card-title">UGB Toppers Test-3</span>
+          <span class="card-arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+</main>
+
+<footer>
+  <p class="note">All materials are provided for educational use in preparation for the ISI and CMI entrance examinations. Click any card to open the PDF in a new tab.</p>
+  <p>&copy; 2026 · Compiled for ISI–CMI aspirants</p>
+</footer>
+
+</body>
+</html>
